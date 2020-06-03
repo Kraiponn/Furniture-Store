@@ -1,4 +1,5 @@
 import { Card, Image } from "semantic-ui-react";
+import Link from "next/link";
 
 function ProductList({ products }) {
   const mapProductToItems = () => {
@@ -6,18 +7,16 @@ function ProductList({ products }) {
       <div>Loading...</div>
     ) : (
       products.map((p) => (
-        <Card
-          key={p._id}
-          link={true}
-          color="teal"
-          href={`/product?_id=${p._id}`}
-        >
-          <Image src={p.mediaUrl} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header>{p.name}</Card.Header>
-            <Card.Meta>{p.price}</Card.Meta>
-          </Card.Content>
-        </Card>
+        <Link href={`/product/${p._id}`} key={p._id}>
+        {/* // <Link href="/product/[id]" as={`/product/${p._id}`} key={p._id}> */}
+          <Card link={true} color="teal">
+            <Image src={p.mediaUrl} wrapped ui={false} />
+            <Card.Content>
+              <Card.Header>{p.name}</Card.Header>
+              <Card.Meta>{p.price}</Card.Meta>
+            </Card.Content>
+          </Card>
+        </Link>
       ))
     );
 
