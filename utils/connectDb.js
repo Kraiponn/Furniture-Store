@@ -9,7 +9,7 @@ async function connectDb() {
     return;
   }
 
-  const conn = await mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI_DEV, {
+  const conn = await mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI, {
     useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,

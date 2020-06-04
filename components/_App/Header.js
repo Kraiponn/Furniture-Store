@@ -39,9 +39,9 @@ function Header({ user }) {
           </Menu.Item>
         </Link>
 
-        {isRootOrAdmin && (
-          <Link href="/create">
-            <Menu.Item header active={isActive("/create")}>
+        {true && (
+          <Link href="/crud/create">
+            <Menu.Item header active={isActive("/crud/create")}>
               <Icon name="add square" size="large" />
               Create
             </Menu.Item>
