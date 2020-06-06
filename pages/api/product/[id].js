@@ -11,6 +11,9 @@ export default async (req, res) => {
     case "DELETE":
       await handleDeleteRequest(req, res);
       break;
+    case "POST":
+      await handleUpdatedRequest(req, res);
+      break;
     default:
       res.status(405).send(`Method ${req.method} not allowed`);
   }
@@ -31,6 +34,16 @@ async function handleDeleteRequest(req, res) {
   await Product.findByIdAndDelete(req.query.id);
 
   res.status(204).json({ success: true, data: "Product deleted successfully" });
+}
+
+async function handleUpdatedRequest(req, res) {
+  const payload = req.body;
+  const product = await Product.findByIdAndUpdate(req.params._id, payload, {
+    new: true,
+    runValidators: true
+  });
+
+  res.status(201).json(product);
 }
 
 // 5ed549938993d95974c4937a

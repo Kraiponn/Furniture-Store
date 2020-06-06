@@ -10,7 +10,7 @@ function Home({ products }) {
 }
 
 export const getStaticProps = async () => {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/products`
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/product`
   const response = await axios.get(url);
   // console.log(response.data);
 

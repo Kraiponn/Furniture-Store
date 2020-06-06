@@ -1,8 +1,24 @@
+import React from "react";
+import axios from "axios";
+import ProductList from "../../components/Index/ProductList";
 
-function Product() {
-  return <>
-    <h1>Product Home Page</h1>
-  </>;
+function Product({ products }) {
+  // name, price, description, sku, mediaUrl
+  return (
+    <ProductList products={products} />
+  );
 }
+
+export const getStaticProps = async () => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/product`
+  const response = await axios.get(url);
+  // console.log(response.data);
+
+  return {
+    props: {
+      products: response.data
+    }
+  };
+};
 
 export default Product;

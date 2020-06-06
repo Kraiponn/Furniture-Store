@@ -12,9 +12,9 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please add a product price"],
   },
-  descript: {
+  description: {
     type: String,
-    required: [true, "Please add a descript of product"],
+    required: [true, "Please add a description for product"],
   },
   sku: {
     type: String,

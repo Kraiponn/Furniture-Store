@@ -2,13 +2,14 @@ import { Card, Image } from "semantic-ui-react";
 import Link from "next/link";
 
 function ProductList({ products }) {
+
   const mapProductToItems = () => {
-    let productItem = !products ? (
+    const productItem = !products ? (
       <div>Loading...</div>
-    ) : (
+    ) : ( 
       products.map((p) => (
-        <Link href={`/product/${p._id}`} key={p._id}>
-        {/* // <Link href="/product/[id]" as={`/product/${p._id}`} key={p._id}> */}
+        // <Link href={`/product/${p._id}`} key={p._id}>
+        <Link href="/product/[id]" as={`/product/${p._id}`} key={p._id}>
           <Card link={true} color="teal">
             <Image src={p.mediaUrl} wrapped ui={false} />
             <Card.Content>
